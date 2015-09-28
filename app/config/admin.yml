@@ -1,4 +1,7 @@
+parameters:
+    admin_web_root: "http://localhost/my/mycore/sf2-easyadmin/web"
 easy_admin:
+    site_name: My Easy Admin
     entities:
         User: 
             label: 'Users'
@@ -14,34 +17,111 @@ easy_admin:
                     - { property: 'plainPassword', type: 'password', label: 'Password', help: 'Passwords must have at least 8 characters' }
                     - { property: 'enabled', type: 'checkbox' }
                     - { property: 'locked', type: 'checkbox' }
-        Customer:
-            class: AppBundle\Entity\Customer
+        #customer entity
+#        Customer:
+#            class: AppBundle\Entity\Customer
+#            list:
+#                fields:
+#                    - user
+#                    - name
+#                    - { property: 'logo', type: 'image', base_path: 'http://localhost/my/admin/sf2-easyadmin/web/images/customers/' }
+#                    - email
+#                    - createdAt
+#                actions:
+#                    - { name: 'show', icon: 'search', label: false }
+#                    - { name: 'edit', icon: 'pencil', label: false }
+#            show:
+#                fields:
+#                    - user
+#                    - name
+#                    - { property: 'logo', type: 'image', base_path: 'http://localhost/my/admin/sf2-easyadmin/web/images/customers/' }
+#                    - firstName
+#                    - lastName
+#                    - email
+#                    - phone
+#                    - companyName
+#                    - website
+#            form:
+#                fields:
+#                    - user
+#                    - name
+#                    - { property: 'logoFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
+#                    - firstName
+#                    - lastname
+#                    - { property: 'email', type: 'email' }
+#                    - phone
+#                    - companyName
+#                    - website
+        #post entity
+        Post:
+            class: AppBundle\Entity\Post
             list:
-                fields: 
-                    - user
-                    - name
-                    - { property: 'logo', type: 'image', base_path: 'http://localhost/sfEasyAdmin/web/images/customers/' }
-                    - email
+                fields:
+                    - id
+                    - title
+                    - { property: 'photo', type: 'image', base_path: '%admin_web_root%/images/posts/' }
+                    - slug
+                    - summary
+                    - tags
+                    - publishedAt
+                    - authorEmail
+                    - updatedAt
                     - createdAt
+                actions:
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: 'edit', icon: 'pencil', label: false }
             show:
                 fields:
-                    - user
-                    - name
-                    - { property: 'logo', type: 'image', base_path: 'http://localhost/sfEasyAdmin/web/images/customers/' }
-                    - firstName
-                    - lastName
-                    - email
-                    - phone
-                    - companyName
-                    - website
+                    - id
+                    - title
+                    - { property: 'photo', type: 'image', base_path: '%admin_web_root%/images/posts/' }
+                    - slug
+                    - { property: 'summary', type: 'textarea' }
+                    - { property: 'content', type: 'textarea' }
+                    - tags
+                    - publishedAt
+                    - authorEmail
+                    - updatedAt
+                    - createdAt
             form:
                 fields:
-                    - user
-                    - name
-                    - { property: 'logoFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
-                    - firstName
-                    - lastname
-                    - { property: 'email', type: 'email' }
-                    - phone
-                    - companyName
-                    - website
+                    - title
+                    - { property: 'summary', type: 'textarea' }
+                    - { property: 'content', type: 'textarea' }
+                    - tags
+                    - { property: 'photoFile', type: 'file', label: 'Upload photo', help: 'Select file to upload / change photo' }
+                    - authorEmail
+                    - publishedAt
+        #Comment entity
+        Comment:
+            class: AppBundle\Entity\Comment
+            list:
+                fields:
+                    - id
+                    - post
+                    #- { property: 'logo', type: 'image', base_path: 'http://localhost/sf2-easyadmin/web/images/customers/' }
+                    - content
+                    - authorEmail
+                    - publishedAt
+                    - updatedAt
+                    - createdAt
+                actions:
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: 'edit', icon: 'pencil', label: false }
+            show:
+                fields:
+                    - id
+                    - post
+                    #- { property: 'logo', type: 'image', base_path: 'http://localhost/sf2-easyadmin/web/images/customers/' }
+                    - content
+                    - authorEmail
+                    - publishedAt
+                    - updatedAt
+                    - createdAt
+            form:
+                fields:
+                    - post
+                    - content
+                    #- { property: 'logoFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
+                    - authorEmail
+                    - publishedAt

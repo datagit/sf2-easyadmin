@@ -21,7 +21,11 @@
         "javiereguiluz/easyadmin-bundle": "~1.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
-        "vich/uploader-bundle": "^0.14.0"
+        "vich/uploader-bundle": "^0.14.0",
+        "cocur/slugify": "dev-master",
+        "liip/imagine-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "fzaninotto/faker": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

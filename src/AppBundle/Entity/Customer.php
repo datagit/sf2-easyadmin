@@ -12,18 +12,16 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Customer
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
  * 
  * @Vich\Uploadable
  */
 class Customer
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="guid")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     private $id;
 
@@ -122,7 +120,7 @@ class Customer
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="customers")
      *
-     * @var AppBundle\Entity\User;
+     * @var \AppBundle\Entity\User;
      */
     protected $user;
 
