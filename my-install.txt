@@ -1,0 +1,81 @@
+http://level7systems.co.uk/en/symfony2-admin-panel-in-30-seconds/
+http://level7systems.co.uk/en/more-with-easyadminbundle/
+http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
+https://github.com/cocur/slugify
+https://github.com/liip/LiipImagineBundle
+http://symfony.com/doc/master/bundles/LiipImagineBundle/installation.html
+https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/index.md
+
+http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html
+
+https://github.com/fzaninotto/Faker
+
+construct basic table: (id, index_auto, created_at, updated_at)
+
+$ php app/console doctrine:database:create
+
+$ php app/console doctrine:schema:update --force
+
+$ php app/console fos:user:create admin admin@level7systems.co.uk admin
+$ php app/console fos:user:promote admin ROLE_ADMIN
+
+user -> customer:
+    user (oneToMany) customer
+        //Entity/User
+        /**
+         * @var ArrayCollection
+         *
+         * @ORM\OneToMany(targetEntity="AppBundle\Entity\Customer", mappedBy="user")
+         */
+        protected $customers;
+    customer (manyToOne) customer
+        //Entity/Customer
+        /**
+         * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="customers")
+         *
+         * @var AppBundle\Entity\User;
+         */
+        protected $user;
+
+customer -> order
+order -> product
+--blog------------------------
+user: fb, g+, twitter
+topic -> post
+    topic (oneToMany) post
+        //Entity/Topic
+        /**
+         * @var ArrayCollection
+         *
+         * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="topic")
+         */
+        protected $posts;
+    post (manyToOne) topic
+        //Entity/Post
+        /**
+         * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Topic", inversedBy="posts")
+         *
+         * @var AppBundle\Entity\Topic;
+         */
+        protected $topic;
+-----------------------------------
+post -> comment
+    post (oneToMany) comment
+        //Entity/Post
+        /**
+         * @var ArrayCollection
+         *
+         * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="post")
+         */
+        protected $comments;
+    comment (manyToOne) post
+        //Entity/Comment
+        /**
+         * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Post", inversedBy="comments")
+         *
+         * @var AppBundle\Entity\Post;
+         */
+        protected $post;
+post(id, comments{object}, title, slug, tags, summary, content, author_email, published_at, created_at, updated_at)
+comment(id, post{object}, content, author_email, published_at)
+

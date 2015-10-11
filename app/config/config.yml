@@ -94,5 +94,21 @@ vich_uploader:
         customer_image:
             uri_prefix:         /images/customers
             upload_destination: %kernel.root_dir%/../web/images/customers
+            namer:              vich_uploader.namer_uniqid
+        post_image:
+            uri_prefix:         /images/posts
+            upload_destination: %kernel.root_dir%/../web/images/posts
+            namer:              vich_uploader.namer_uniqid
 
-        
+# resize image: https://github.com/liip/LiipImagineBundle
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        my_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }
