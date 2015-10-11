@@ -1,5 +1,4 @@
-parameters:
-    admin_web_root: "http://localhost/my/mycore/sf2-easyadmin/web"
+#sdocument: https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
     site_name: My Easy Admin
     entities:
@@ -17,6 +16,7 @@ easy_admin:
                     - { property: 'plainPassword', type: 'password', label: 'Password', help: 'Passwords must have at least 8 characters' }
                     - { property: 'enabled', type: 'checkbox' }
                     - { property: 'locked', type: 'checkbox' }
+
         #customer entity
 #        Customer:
 #            class: AppBundle\Entity\Customer
@@ -59,7 +59,7 @@ easy_admin:
                 fields:
                     - id
                     - title
-                    - { property: 'photo', type: 'image', base_path: '%admin_web_root%/images/posts/' }
+                    - { property: 'photo', type: 'image', base_path: 'http://localhost/my/admin/sf2-easyadmin/web/images/posts/' }
                     - slug
                     - summary
                     - tags
@@ -70,11 +70,13 @@ easy_admin:
                 actions:
                     - { name: 'show', icon: 'search', label: false }
                     - { name: 'edit', icon: 'pencil', label: false }
+                    #https://github.com/javiereguiluz/EasyAdminBundle/blob/master/Resources/doc/tutorials/customizing-backend-actions.md
+                    - { name: 'restock', type: 'method' }
             show:
                 fields:
                     - id
                     - title
-                    - { property: 'photo', type: 'image', base_path: '%admin_web_root%/images/posts/' }
+                    - { property: 'photo', type: 'image', base_path: 'http://localhost/my/admin/sf2-easyadmin/web/images/posts/' }
                     - slug
                     - { property: 'summary', type: 'textarea' }
                     - { property: 'content', type: 'textarea' }

@@ -1,3 +1,4 @@
+https://github.com/javiereguiluz/EasyAdminBundle
 http://level7systems.co.uk/en/symfony2-admin-panel-in-30-seconds/
 http://level7systems.co.uk/en/more-with-easyadminbundle/
 http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
@@ -6,18 +7,7 @@ https://github.com/liip/LiipImagineBundle
 http://symfony.com/doc/master/bundles/LiipImagineBundle/installation.html
 https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/index.md
 
-http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html
-
-https://github.com/fzaninotto/Faker
-
-construct basic table: (id, index_auto, created_at, updated_at)
-
-$ php app/console doctrine:database:create
-
-$ php app/console doctrine:schema:update --force
-
-$ php app/console fos:user:create admin admin@level7systems.co.uk admin
-$ php app/console fos:user:promote admin ROLE_ADMIN
+construct basic table: (id, created_at, updated_at)
 
 user -> customer:
     user (oneToMany) customer

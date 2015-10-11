@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 
-use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -40,13 +39,12 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(name="slug", type="string", length=255)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="slug", type="string")
      */
     private $slug;
 
     /**
-     * @ORM\Column(name="tags", type="string", length=255, nullable=true)
+     * @ORM\Column(name="tags", type="string")
      */
     private $tags;
 
@@ -182,8 +180,6 @@ class Post
     public function setTitle($title)
     {
         $this->title = $title;
-        $slugify = new Slugify();
-        $this->setSlug($slugify->slugify($title));
     }
 
     public function getSlug()

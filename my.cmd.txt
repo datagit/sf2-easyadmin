@@ -1,0 +1,7 @@
+sudo chown -R ubuntu:www-data *
+sudo chmod -R 775 *
+sudo chmod -R 777 app/cache
+sudo chmod -R 777 app/logs
+
+sudo -u www-data php app/console list
+sudo -u www-data php app/console cache:clear
