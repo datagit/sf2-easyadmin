@@ -1,7 +1,14 @@
-sudo chown -R ubuntu:www-data *
+#linux: www-data
+#macos: _www
+sudo chown -R datdao:_www *
 sudo chmod -R 775 *
 sudo chmod -R 777 app/cache
 sudo chmod -R 777 app/logs
 
-sudo -u www-data php app/console list
-sudo -u www-data php app/console cache:clear
+
+sudo -u _www php app/console list
+sudo -u _www php app/console cache:clear
+
+#create DB
+sudo -u _www php app/console doctrine:database:create
+sudo -u _www php app/console doctrine:schema:create
