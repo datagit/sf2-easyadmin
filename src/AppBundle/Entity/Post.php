@@ -25,6 +25,7 @@ class Post
      */
     const NUM_ITEMS = 10;
 
+
     /**
      * @ORM\Column(type="guid")
      * @ORM\Id
